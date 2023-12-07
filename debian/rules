@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
 
+export DH_GOLANG_GO_GENERATE := 1
+export DH_GOLANG_EXCLUDES := internal cursor_test.go mock_test.go
+
 %:
-	dh $@
+	dh $@ --builddirectory=_build --buildsystem=golang
+
+execute_before_dh_auto_configure:
+	cp -av debian/vendor ./
