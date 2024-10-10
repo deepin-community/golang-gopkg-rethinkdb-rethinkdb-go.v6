@@ -8,3 +8,6 @@ export DH_GOLANG_EXCLUDES := internal cursor_test.go mock_test.go
 
 execute_before_dh_auto_configure:
 	cp -av debian/vendor ./
+
+execute_after_dh_clean:
+	rm -rfv vendor/
